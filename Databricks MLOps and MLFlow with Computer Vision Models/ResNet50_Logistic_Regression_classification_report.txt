@@ -1,0 +1,11 @@
+               precision    recall  f1-score   support
+
+   Clear_Cell       0.73      0.82      0.77       300
+    Endometri       0.83      0.83      0.83       294
+     Mucinous       0.72      0.67      0.69       300
+Non_Cancerous       0.73      0.77      0.75       300
+       Serous       0.86      0.77      0.81       300
+
+     accuracy                           0.77      1494
+    macro avg       0.77      0.77      0.77      1494
+ weighted avg       0.77      0.77      0.77      1494

@@ -1,0 +1,12 @@
+bundle:
+  name: ovarian_cancer_pipeline_automated
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-30f85e69-d913.cloud.databricks.com

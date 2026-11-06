@@ -1,0 +1,44 @@
+resources:
+  jobs:
+    ovarian_cancer_mlops_pipeline:
+      name: "Ovarian_Cancer_End_to_End_MLOps_Pipeline"
+      tasks:
+        # Task 1: Clean & Filter Images
+        - task_key: "Data_Cleaning"
+          notebook_task:
+            notebook_path: "/Workspace/Users/shrestharoyce24@gmail.com/ovarian_cancer_pipeline_automated/Data_Cleaning"
+
+        # Task 2: Split & Dataset Lineage
+        - task_key: "Preprocessing"
+          depends_on:
+            - task_key: "Data_Cleaning"
+          notebook_task:
+            notebook_path: "/Workspace/Users/shrestharoyce24@gmail.com/ovarian_cancer_pipeline_automated/Preprocessing"
+
+        # Task 3: ResNet50 & Feature Selection
+        - task_key: "Feature_Extraction"
+          depends_on:
+            - task_key: "Preprocessing"
+          notebook_task:
+            notebook_path: "/Workspace/Users/shrestharoyce24@gmail.com/ovarian_cancer_pipeline_automated/Feature Extraction and Selection"
+
+        # Task 4: Candidate Tournaments & Logging
+        - task_key: "Model_Training"
+          depends_on:
+            - task_key: "Feature_Extraction"
+          notebook_task:
+            notebook_path: "/Workspace/Users/shrestharoyce24@gmail.com/ovarian_cancer_pipeline_automated/Model Training and Selection"
+
+        # Task 5: End-to-End PyFunc Registration
+        - task_key: "Model_Registration"
+          depends_on:
+            - task_key: "Model_Training"
+          notebook_task:
+            notebook_path: "/Workspace/Users/shrestharoyce24@gmail.com/ovarian_cancer_pipeline_automated/Champion Model Registration"
+
+        # Task 6: Holdout Batch Evaluation
+        - task_key: "Batch_Model_Testing"
+          depends_on:
+            - task_key: "Model_Registration"
+          notebook_task:
+            notebook_path: "/Workspace/Users/shrestharoyce24@gmail.com/ovarian_cancer_pipeline_automated/Champion Model Testing"
